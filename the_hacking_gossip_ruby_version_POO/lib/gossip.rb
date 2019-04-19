@@ -1,4 +1,3 @@
-require 'pry'
 require 'csv'
 
 class Gossip
@@ -10,9 +9,19 @@ class Gossip
 	end
 
 	def save
-			CSV.open("./db/gossip.csv", "ab") do |csv|
-  			csv << [@author, @content]
+			CSV.open("./db/gossip.csv", "ab") do |row| #saves every array that includes a name and a gossip in rows
+  			row << [@author, @content]
+			end
 	end
-end
-binding.pry
+
+	def self.all
+ 		all_gossips = [] # 1)création d'un array vide qui s'appelle all_gossips
+
+ 		CSV.foreach("./db/gossip.csv") do |row|# 2)chaque ligne de ton CSV.each do |ligne|
+    	all_gossips << row
+    	
+
+    	end
+    	puts all_gossips
+	end
 end

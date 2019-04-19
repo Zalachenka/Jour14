@@ -1,5 +1,4 @@
-require 'controller'
-require 'csv'
+require_relative 'controller'
 
 class Router
 
@@ -17,20 +16,33 @@ class Router
       #on affiche le menu
       puts "Whatcha doin' ?"
       puts "1. Wanna gossip"
-      puts "2. Wanna know EVERYTHING"
+      puts "2. Wanna know it ALL"
+      puts "3. Wanna hide some stuff"
       puts "4. Wanna leave the app"
+      puts "Your answer ?"
       params = gets.chomp.to_i #on attend le choix de l'utilisateur
 
       case params #en fonction du choix
       when 1
+      	puts ""
         puts "You chose to gossip" 
+        puts ""
         	@controller.create_gossip
 
       when 2
-      	puts "Wanna know it all huh ? Let's see:"
-      		@controller.gossip_list
+      	puts ""
+      	puts "Wanna know everything ? Here you go(ssip):"
+      	puts ""
+      		@controller.index_gossips
+      	puts ""
 
+      when 3
+      	puts ""
+      	puts "Wanna bury secrets hey ? You got it boss"
+      	puts ""
+      		@controller.destroy_gossip
       when 4
+      	puts ""
         puts "See ya !"
         break #Ce "break" permet de sortir de la boucle while. C'est même la seule façon d'en sortir.
 
