@@ -19,9 +19,8 @@ class Controller
 
 	def destroy_gossip
 
- 		puts "This is the list of all the gossips associated with their authors."
- 		puts gossip.csv
-		puts "What row do you wanna hide ?"
+ 		puts "Which gossip do you wanna destroy ?"
+ 		
 		all = gets.to_i
 			CSV.foreach("./db/gossip.csv") do |row|
 		table = CSV.table(@csvfile)

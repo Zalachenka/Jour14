@@ -39,7 +39,8 @@ class Router
       when 3
       	puts ""
       	puts "Wanna bury secrets hey ? You got it boss"
-      	puts ""
+      	puts "This is the list of all the gossips associated with their authors."
+      		@controller.index_gossips
       		@controller.destroy_gossip
       when 4
       	puts ""
