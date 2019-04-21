@@ -19,22 +19,22 @@ class Controller
 
 	def destroy_gossip
 
-		all_gossips = [] 
-
- 		CSV.foreach("./db/gossip.csv") do |row|
-
-		puts "What do you wanna hide ?"
-		all_gossips.select
+ 		puts "This is the list of all the gossips associated with their authors."
+ 		puts gossip.csv
+		puts "What row do you wanna hide ?"
+		all = gets.to_i
+			CSV.foreach("./db/gossip.csv") do |row|
 		table = CSV.table(@csvfile)
 
 		table.delete_if do |row|
-  		row[:foo] == 'true'
+  		row[:foo] == all
 		end
 
 		File.open(@csvfile, 'w') do |f|
   		f.write(table.to_csv)
 		end
-	end
+		return "You deleted gossip number #{all}."
+		end
 	end
 end
 
